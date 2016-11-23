@@ -86,32 +86,20 @@
 
 
 
-<meta name="description" content="前言这篇文章是自己对于学习iOS底层的 RunLoop 的一个整理和记录，主要参考了 Apple 的官方文档和网上大神们的文章，然后加以自己的理解和验证完成的。
-
-什么是 RunLoop？先来看看Apple文档对RunLoop的定义：
-
-Run loops are part of the fundamental infrastructur associated with threads. A r">
+<meta name="description" content="前言这篇文章是自己对于学习iOS底层的 RunLoop 的一个整理和记录，主要参考了 Apple 的官方文档和网上大神们的文章，然后加以自己的理解和验证完成的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS之初识RunLoop">
 <meta property="og:url" content="http://yoursite.com/2016/08/26/iOS之初识RunLoop/index.html">
 <meta property="og:site_name" content="Henry's blog">
-<meta property="og:description" content="前言这篇文章是自己对于学习iOS底层的 RunLoop 的一个整理和记录，主要参考了 Apple 的官方文档和网上大神们的文章，然后加以自己的理解和验证完成的。
-
-什么是 RunLoop？先来看看Apple文档对RunLoop的定义：
-
-Run loops are part of the fundamental infrastructur associated with threads. A r">
+<meta property="og:description" content="前言这篇文章是自己对于学习iOS底层的 RunLoop 的一个整理和记录，主要参考了 Apple 的官方文档和网上大神们的文章，然后加以自己的理解和验证完成的。">
 <meta property="og:image" content="http://ocgehzzvy.bkt.clouddn.com/appLiftCycle.jpg">
 <meta property="og:image" content="http://ocgehzzvy.bkt.clouddn.com/runLoop%E5%90%AF%E5%8A%A8.png">
 <meta property="og:image" content="http://ocgehzzvy.bkt.clouddn.com/runloopWorkflow.jpg">
 <meta property="og:image" content="http://ocgehzzvy.bkt.clouddn.com/runLoopLogic.png">
-<meta property="og:updated_time" content="2016-09-20T08:08:32.000Z">
+<meta property="og:updated_time" content="2016-11-23T09:58:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS之初识RunLoop">
-<meta name="twitter:description" content="前言这篇文章是自己对于学习iOS底层的 RunLoop 的一个整理和记录，主要参考了 Apple 的官方文档和网上大神们的文章，然后加以自己的理解和验证完成的。
-
-什么是 RunLoop？先来看看Apple文档对RunLoop的定义：
-
-Run loops are part of the fundamental infrastructur associated with threads. A r">
+<meta name="twitter:description" content="前言这篇文章是自己对于学习iOS底层的 RunLoop 的一个整理和记录，主要参考了 Apple 的官方文档和网上大神们的文章，然后加以自己的理解和验证完成的。">
 <meta name="twitter:image" content="http://ocgehzzvy.bkt.clouddn.com/appLiftCycle.jpg">
 
 
@@ -314,10 +302,8 @@ Run loops are part of the fundamental infrastructur associated with threads. A r
       
 
       
-        <hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章是自己对于学习iOS底层的 RunLoop 的一个整理和记录，主要参考了 Apple 的官方文档和网上大神们的文章，然后加以自己的理解和验证完成的。</p>
-<hr>
-<h2 id="什么是-RunLoop？"><a href="#什么是-RunLoop？" class="headerlink" title="什么是 RunLoop？"></a>什么是 RunLoop？</h2><p>先来看看Apple文档对RunLoop的定义：</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章是自己对于学习iOS底层的 RunLoop 的一个整理和记录，主要参考了 Apple 的官方文档和网上大神们的文章，然后加以自己的理解和验证完成的。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="什么是-RunLoop？"><a href="#什么是-RunLoop？" class="headerlink" title="什么是 RunLoop？"></a>什么是 RunLoop？</h2><p>先来看看Apple文档对RunLoop的定义：</p>
 <blockquote>
 <p>Run loops are part of the fundamental infrastructur associated with threads. A run loop is an event processing loop that you use to schedule work and coordinate the recipt of incoming events. The purpose of run loop is to keep your thread busy when there is work to do and put your thread to sleep when there is none. </p>
 <p>Run loop management is not entirely automatic. You must sitll design your thread’s code to start the run loop appropriate times and respond to incoming events. Both Cocoa and Core Foundation provide <em>run loop objects</em> to help you configure and manage your thread’s run loop. Your application does not need to create these objects explicitly; each thread, including the application’s main thread, has an associated run loop object. Only secondry threads need to run loop explicitly, however. The app frameworks automatically set up and run the run loop on the main thread as part of the application startup process.</p>
@@ -554,7 +540,7 @@ Run loops are part of the fundamental infrastructur associated with threads. A r
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-RunLoop？"><span class="nav-number">2.</span> <span class="nav-text">什么是 RunLoop？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#App的启动过程"><span class="nav-number">3.</span> <span class="nav-text">App的启动过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Run-loop-Run-loop-object和线程的关系？"><span class="nav-number">4.</span> <span class="nav-text">Run loop/Run loop object和线程的关系？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Run-Loop解析"><span class="nav-number">5.</span> <span class="nav-text">Run Loop解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-Loop-Mode"><span class="nav-number">5.1.</span> <span class="nav-text">Run Loop Mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RunLoop的输入源"><span class="nav-number">5.2.</span> <span class="nav-text">RunLoop的输入源</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基于端口的输入源"><span class="nav-number">5.2.0.1.</span> <span class="nav-text">基于端口的输入源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自定义的输入源"><span class="nav-number">5.2.0.2.</span> <span class="nav-text">自定义的输入源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cocoa-Perform-Selector-Sources"><span class="nav-number">5.2.0.3.</span> <span class="nav-text">Cocoa Perform Selector Sources</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RunLoopTimer（定时源）"><span class="nav-number">5.3.</span> <span class="nav-text">RunLoopTimer（定时源）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RunLoopObserver"><span class="nav-number">5.4.</span> <span class="nav-text">RunLoopObserver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-Loop内部实现"><span class="nav-number">5.5.</span> <span class="nav-text">Run Loop内部实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我们什么时候需要用到run-loop"><span class="nav-number">6.</span> <span class="nav-text">我们什么时候需要用到run loop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-RunLoop？"><span class="nav-number">3.</span> <span class="nav-text">什么是 RunLoop？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#App的启动过程"><span class="nav-number">4.</span> <span class="nav-text">App的启动过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Run-loop-Run-loop-object和线程的关系？"><span class="nav-number">5.</span> <span class="nav-text">Run loop/Run loop object和线程的关系？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Run-Loop解析"><span class="nav-number">6.</span> <span class="nav-text">Run Loop解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-Loop-Mode"><span class="nav-number">6.1.</span> <span class="nav-text">Run Loop Mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RunLoop的输入源"><span class="nav-number">6.2.</span> <span class="nav-text">RunLoop的输入源</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基于端口的输入源"><span class="nav-number">6.2.0.1.</span> <span class="nav-text">基于端口的输入源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自定义的输入源"><span class="nav-number">6.2.0.2.</span> <span class="nav-text">自定义的输入源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cocoa-Perform-Selector-Sources"><span class="nav-number">6.2.0.3.</span> <span class="nav-text">Cocoa Perform Selector Sources</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RunLoopTimer（定时源）"><span class="nav-number">6.3.</span> <span class="nav-text">RunLoopTimer（定时源）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RunLoopObserver"><span class="nav-number">6.4.</span> <span class="nav-text">RunLoopObserver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-Loop内部实现"><span class="nav-number">6.5.</span> <span class="nav-text">Run Loop内部实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我们什么时候需要用到run-loop"><span class="nav-number">7.</span> <span class="nav-text">我们什么时候需要用到run loop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
           </div>
         </section>

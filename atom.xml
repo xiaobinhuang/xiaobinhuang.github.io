@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-22T10:01:24.000Z</updated>
+  <updated>2016-11-23T10:01:22.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,13 +20,14 @@
     <link href="http://yoursite.com/2016/11/22/iOS%E5%A4%9A%E5%9B%BD%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2016/11/22/iOS多国化学习笔记/</id>
     <published>2016-11-22T10:00:43.000Z</published>
-    <updated>2016-11-22T10:01:24.000Z</updated>
+    <updated>2016-11-23T10:01:22.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;xib和storyboard文件&quot;&gt;&lt;a href=&quot;#xib和storyboard文件&quot; class=&quot;headerlink&quot; title=&quot;xib和storyboard文件&quot;&gt;&lt;/a&gt;xib和storyboard文件&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Project -&amp;gt; Localizations中选择需要本地化的语言&lt;/li&gt;
 &lt;li&gt;xib文件选择Localization中的Base，并勾选需要本地化的语言&lt;/li&gt;
 &lt;li&gt;storyboard文件中Localization中，勾选Base（默认已经勾选）和需要本地化的语言&lt;/li&gt;
-&lt;li&gt;在相应的XXX.lproj目录中，找到XXX.strings文件，修改需要本地化的内容&lt;/li&gt;
+&lt;li&gt;在相应的XXX.lproj目录中，找到XXX.strings文件，修改需要本地化的内容&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&quot;代码中的文字&quot;&gt;&lt;a href=&quot;#代码中的文字&quot; class=&quot;headerlink&quot; title=&quot;代码中的文字&quot;&gt;&lt;/a&gt;代码中的文字&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;找到需要本地化的内容，替换成&lt;code&gt;NSLocalizedString(key, comment: comment)&lt;/code&gt;&lt;/li&gt;
@@ -40,7 +41,10 @@
     <summary type="html">
     
       &lt;h2 id=&quot;xib和storyboard文件&quot;&gt;&lt;a href=&quot;#xib和storyboard文件&quot; class=&quot;headerlink&quot; title=&quot;xib和storyboard文件&quot;&gt;&lt;/a&gt;xib和storyboard文件&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;Project 
+&lt;li&gt;Project -&amp;gt; Localizations中选择需要本地化的语言&lt;/li&gt;
+&lt;li&gt;xib文件选择Localization中的Base，并勾选需要本地化的语言&lt;/li&gt;
+&lt;li&gt;storyboard文件中Localization中，勾选Base（默认已经勾选）和需要本地化的语言&lt;/li&gt;
+&lt;li&gt;在相应的XXX.lproj目录中，找到XXX.strings文件，修改需要本地化的内容
     
     </summary>
     
@@ -52,10 +56,9 @@
     <link href="http://yoursite.com/2016/09/20/iOS%E9%9A%90%E8%97%8F%E9%94%AE%E7%9B%98/"/>
     <id>http://yoursite.com/2016/09/20/iOS隐藏键盘/</id>
     <published>2016-09-20T08:06:28.000Z</published>
-    <updated>2016-11-22T09:25:11.000Z</updated>
+    <updated>2016-11-23T09:59:31.000Z</updated>
     
-    <content type="html">&lt;hr&gt;
-&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;在开发App的过程中，经常要求用户进行输入操作，比如登陆过程中要求输入用户名和密码。但是有可能弹出的keyboard把登陆button挡住了，从而无法点击button。&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;在开发App的过程中，经常要求用户进行输入操作，比如登陆过程中要求输入用户名和密码。但是有可能弹出的keyboard把登陆button挡住了，从而无法点击button。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;解决方法&quot;&gt;&lt;a href=&quot;#解决方法&quot; class=&quot;headerlink&quot; title=&quot;解决方法&quot;&gt;&lt;/a&gt;解决方法&lt;/h2&gt;&lt;p&gt;可以通过实现隐藏键盘来解决这类问题。隐藏键盘的方法也有好几种，比如利用键盘的return键来实现隐藏，也可以通过点击view上其它的空白处来实现隐藏，或者通过响应自定义手势来隐藏，还可以通过给软键盘增加一个toolbar，在toolbar上面添加按钮来实现隐藏键盘，当然还有其它没有提及的方法。&lt;br&gt;常用的隐藏键盘的两个方法：&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;[view endEditing:YES];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[textField resignFirstResponder];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;点击View空白处隐藏键盘&quot;&gt;&lt;a href=&quot;#点击View空白处隐藏键盘&quot; class=&quot;headerlink&quot; title=&quot;点击View空白处隐藏键盘&quot;&gt;&lt;/a&gt;点击View空白处隐藏键盘&lt;/h3&gt;&lt;h4 id=&quot;1-重写touchesBegan-withEvent-方法&quot;&gt;&lt;a href=&quot;#1-重写touchesBegan-withEvent-方法&quot; class=&quot;headerlink&quot; title=&quot;1.重写touchesBegan: withEvent:方法&quot;&gt;&lt;/a&gt;1.重写&lt;code&gt;touchesBegan: withEvent:&lt;/code&gt;方法&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;- (void)touchesBegan:(NSSet&amp;lt;UITouch *&amp;gt; *)touches withEvent:(UIEvent *)event &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    UITouch *touch = [[event allTouches] anyObject];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    if ([textField isFirstResponder] &amp;amp;&amp;amp; [touch view] != textField) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        [self.view endEditing:YES];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    [super touchesBegan: touches withEvent: event];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -75,8 +78,7 @@
     
     <summary type="html">
     
-      &lt;hr&gt;
-&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;在开发App的过程中，经常要求用户进行输入操作，比如登陆过程中要求输入用户名和密码。但是有可能弹出的keyboar
+      &lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;在开发App的过程中，经常要求用户进行输入操作，比如登陆过程中要求输入用户名和密码。但是有可能弹出的keyboard把登陆button挡住了，从而无法点击button。&lt;br&gt;
     
     </summary>
     
@@ -90,12 +92,10 @@
     <link href="http://yoursite.com/2016/08/26/iOS%E4%B9%8B%E5%88%9D%E8%AF%86RunLoop/"/>
     <id>http://yoursite.com/2016/08/26/iOS之初识RunLoop/</id>
     <published>2016-08-26T07:18:11.000Z</published>
-    <updated>2016-09-20T08:08:32.000Z</updated>
+    <updated>2016-11-23T09:58:45.000Z</updated>
     
-    <content type="html">&lt;hr&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这篇文章是自己对于学习iOS底层的 RunLoop 的一个整理和记录，主要参考了 Apple 的官方文档和网上大神们的文章，然后加以自己的理解和验证完成的。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;什么是-RunLoop？&quot;&gt;&lt;a href=&quot;#什么是-RunLoop？&quot; class=&quot;headerlink&quot; title=&quot;什么是 RunLoop？&quot;&gt;&lt;/a&gt;什么是 RunLoop？&lt;/h2&gt;&lt;p&gt;先来看看Apple文档对RunLoop的定义：&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这篇文章是自己对于学习iOS底层的 RunLoop 的一个整理和记录，主要参考了 Apple 的官方文档和网上大神们的文章，然后加以自己的理解和验证完成的。&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;什么是-RunLoop？&quot;&gt;&lt;a href=&quot;#什么是-RunLoop？&quot; class=&quot;headerlink&quot; title=&quot;什么是 RunLoop？&quot;&gt;&lt;/a&gt;什么是 RunLoop？&lt;/h2&gt;&lt;p&gt;先来看看Apple文档对RunLoop的定义：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Run loops are part of the fundamental infrastructur associated with threads. A run loop is an event processing loop that you use to schedule work and coordinate the recipt of incoming events. The purpose of run loop is to keep your thread busy when there is work to do and put your thread to sleep when there is none. &lt;/p&gt;
 &lt;p&gt;Run loop management is not entirely automatic. You must sitll design your thread’s code to start the run loop appropriate times and respond to incoming events. Both Cocoa and Core Foundation provide &lt;em&gt;run loop objects&lt;/em&gt; to help you configure and manage your thread’s run loop. Your application does not need to create these objects explicitly; each thread, including the application’s main thread, has an associated run loop object. Only secondry threads need to run loop explicitly, however. The app frameworks automatically set up and run the run loop on the main thread as part of the application startup process.&lt;/p&gt;
@@ -192,8 +192,8 @@
     
     <summary type="html">
     
-      &lt;hr&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这篇文章是自己对于学习iOS底层的 RunLoop 的一个整理和记录，主要参考了 Apple 的官方文档和网上大神们的文章，然后加
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这篇文章是自己对于学习iOS底层的 RunLoop 的一个整理和记录，主要参考了 Apple 的官方文档和网上大神们的文章，然后加以自己的理解和验证完成的。&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;
     
     </summary>
     
