@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-23T10:01:22.000Z</updated>
+  <updated>2016-11-30T08:25:38.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,72 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS 内存管理笔记</title>
+    <link href="http://yoursite.com/2016/11/30/iOS-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2016/11/30/iOS-内存管理笔记/</id>
+    <published>2016-11-30T08:21:51.000Z</published>
+    <updated>2016-11-30T08:25:38.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;内存管理的思考方式&quot;&gt;&lt;a href=&quot;#内存管理的思考方式&quot; class=&quot;headerlink&quot; title=&quot;内存管理的思考方式&quot;&gt;&lt;/a&gt;内存管理的思考方式&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;自己生成的对象，自己持有&lt;/li&gt;
+&lt;li&gt;非自己生成的对象，自己也能持有&lt;/li&gt;
+&lt;li&gt;不再需要自己持有的对象时释放&lt;/li&gt;
+&lt;li&gt;非自己持有的对象无法释放&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;自己生成的对象，自己持有&quot;&gt;&lt;a href=&quot;#自己生成的对象，自己持有&quot; class=&quot;headerlink&quot; title=&quot;自己生成的对象，自己持有&quot;&gt;&lt;/a&gt;自己生成的对象，自己持有&lt;/h3&gt;&lt;p&gt;使用&lt;code&gt;alloc&lt;/code&gt;,&lt;code&gt;new&lt;/code&gt;,&lt;code&gt;copy&lt;/code&gt;和&lt;code&gt;mutableCopy&lt;/code&gt;开头的方法生成的对象，自己持有。引用计数从0变成1。&lt;/p&gt;
+&lt;h3 id=&quot;非自己生成的对象，自己也能持有&quot;&gt;&lt;a href=&quot;#非自己生成的对象，自己也能持有&quot; class=&quot;headerlink&quot; title=&quot;非自己生成的对象，自己也能持有&quot;&gt;&lt;/a&gt;非自己生成的对象，自己也能持有&lt;/h3&gt;&lt;p&gt;通过使用&lt;code&gt;alloc&lt;/code&gt;,&lt;code&gt;new&lt;/code&gt;,&lt;code&gt;copy&lt;/code&gt;和&lt;code&gt;mutableCopy&lt;/code&gt;以外的方法生成的对象，因为非自己生成并持有，所以自己不是该对象的持有者。可以使用&lt;code&gt;retain&lt;/code&gt;方法来持有对象，使得引用计数+1。&lt;/p&gt;
+&lt;h3 id=&quot;不再需要自己持有的对象时释放该对象&quot;&gt;&lt;a href=&quot;#不再需要自己持有的对象时释放该对象&quot; class=&quot;headerlink&quot; title=&quot;不再需要自己持有的对象时释放该对象&quot;&gt;&lt;/a&gt;不再需要自己持有的对象时释放该对象&lt;/h3&gt;&lt;p&gt;对于不再需要的对象，要通过&lt;code&gt;release&lt;/code&gt;方法使得对象的引用计数-1，当对象的引用计数变为0时，对象被废弃。&lt;/p&gt;
+&lt;h3 id=&quot;非自己持有的对象无法释放&quot;&gt;&lt;a href=&quot;#非自己持有的对象无法释放&quot; class=&quot;headerlink&quot; title=&quot;非自己持有的对象无法释放&quot;&gt;&lt;/a&gt;非自己持有的对象无法释放&lt;/h3&gt;&lt;p&gt;通过&lt;code&gt;alloc&lt;/code&gt;,&lt;code&gt;new&lt;/code&gt;,&lt;code&gt;copy&lt;/code&gt;和&lt;code&gt;mutableCopy&lt;/code&gt;方法生成并持有的对象 ，或者通过&lt;code&gt;retain&lt;/code&gt;方法来持有的其它生成的对象，在不需要该对象时可以通过&lt;code&gt;release&lt;/code&gt;方法来释放该对象，如果长时间的不释放这些无用的对象，会造成系统的内存使用紧张和内存泄露。但是如果在应用中释放了不是自己持有的对象会造成应用崩溃。&lt;br&gt;例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自己生成并持有的对象，在释放后不能再次释放该对象&lt;/li&gt;
+&lt;li&gt;不能释放其它生成，但自己不持有的对象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;autorelease和release&quot;&gt;&lt;a href=&quot;#autorelease和release&quot; class=&quot;headerlink&quot; title=&quot;autorelease和release&quot;&gt;&lt;/a&gt;autorelease和release&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;使用autorelease可以使取得的对象存在，但不持有该对象&lt;/li&gt;
+&lt;li&gt;autorelease能够使对象在超出指定的生存范围时能够自动并正确地释放&lt;/li&gt;
+&lt;li&gt;autorelease可以看作是延迟调用了release方法来释放对象。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;ARC自动引用计数&quot;&gt;&lt;a href=&quot;#ARC自动引用计数&quot; class=&quot;headerlink&quot; title=&quot;ARC自动引用计数&quot;&gt;&lt;/a&gt;ARC自动引用计数&lt;/h2&gt;&lt;h3 id=&quot;什么是自动引用计数&quot;&gt;&lt;a href=&quot;#什么是自动引用计数&quot; class=&quot;headerlink&quot; title=&quot;什么是自动引用计数&quot;&gt;&lt;/a&gt;什么是自动引用计数&lt;/h3&gt;&lt;p&gt;OC中采用ARC机制，Apple使用新的LLVM编译器来进行内存管理，在代码编译期间会在相应的代码位置加入合适的&lt;code&gt;retain&lt;/code&gt;和&lt;code&gt;release&lt;/code&gt;方法来管理对象的引用计数。&lt;/p&gt;
+&lt;h3 id=&quot;对象的所有权修饰符&quot;&gt;&lt;a href=&quot;#对象的所有权修饰符&quot; class=&quot;headerlink&quot; title=&quot;对象的所有权修饰符&quot;&gt;&lt;/a&gt;对象的所有权修饰符&lt;/h3&gt;&lt;p&gt;ARC有效时，id类型和对象类型必须附加所有权修饰符。&lt;br&gt;所有权修饰符一共有4种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;__strong修饰符&lt;/li&gt;
+&lt;li&gt;__weak修饰符&lt;/li&gt;
+&lt;li&gt;__unsafe _unretained修饰符&lt;/li&gt;
+&lt;li&gt;__autoreleasing修饰符&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;strong修饰符&quot;&gt;&lt;a href=&quot;#strong修饰符&quot; class=&quot;headerlink&quot; title=&quot;__strong修饰符&quot;&gt;&lt;/a&gt;__strong修饰符&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;strong修饰符是id类型和对象类型的默认的所有权修饰符。 &lt;/strong&gt;strong修饰符表示对对象的&lt;strong&gt;强引用&lt;/strong&gt;，使用__strong修饰符的变量会保留对象的值。当变量在超出其变量作用域时，即变量被废弃时，会释放其所持有的对象。&lt;/p&gt;
+&lt;h3 id=&quot;weak修饰符&quot;&gt;&lt;a href=&quot;#weak修饰符&quot; class=&quot;headerlink&quot; title=&quot;__weak修饰符&quot;&gt;&lt;/a&gt;__weak修饰符&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;weak修饰符表示对对象的&lt;strong&gt;弱引用&lt;/strong&gt;， 使用 &lt;/strong&gt;weak修饰符的变量不会保留对象的值，也不会持有对象实例。当 &lt;strong&gt;weak修饰的变量所指向的对象废弃时，变量会自动赋值为nil。&lt;br&gt;使用 &lt;/strong&gt;weak修饰符可以避免循环引用的发生。&lt;/p&gt;
+&lt;h3 id=&quot;unsafe-unretained修饰符&quot;&gt;&lt;a href=&quot;#unsafe-unretained修饰符&quot; class=&quot;headerlink&quot; title=&quot;__unsafe _unretained修饰符&quot;&gt;&lt;/a&gt;__unsafe _unretained修饰符&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;unsafe _unretained修饰符是不安全的修饰符，和 &lt;/strong&gt;weak修饰符一样，不保留变量的值，也不会持有对象。当 &lt;strong&gt;unsafe _unretained修饰的变量所指向的对象废弃时，变量会被废弃，成为一个悬指针，不会像 &lt;/strong&gt;weak自动赋值为nil。需要注意的一点，附加了 __unsafe _unretained修饰符的变量不属于编译器内存管理的对象。&lt;/p&gt;
+&lt;h3 id=&quot;autoreleasing修饰符&quot;&gt;&lt;a href=&quot;#autoreleasing修饰符&quot; class=&quot;headerlink&quot; title=&quot;__autoreleasing修饰符&quot;&gt;&lt;/a&gt;__autoreleasing修饰符&lt;/h3&gt;&lt;p&gt;ARC有效时，使用&lt;code&gt;@autoreleasepool&lt;/code&gt;快来替代&lt;code&gt;NSAutoreleasePool&lt;/code&gt;类对象生成、持有以及废弃这一范围。&lt;br&gt;通过对变量附加了__autoreleaseing修饰符来替代调用&lt;code&gt;autorelease&lt;/code&gt;方法。&lt;/p&gt;
+&lt;h3 id=&quot;ARC规则&quot;&gt;&lt;a href=&quot;#ARC规则&quot; class=&quot;headerlink&quot; title=&quot;ARC规则&quot;&gt;&lt;/a&gt;ARC规则&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;不能显示的使用&lt;code&gt;retain&lt;/code&gt;/&lt;code&gt;release&lt;/code&gt;/&lt;code&gt;retainCount&lt;/code&gt;/&lt;code&gt;autorelease&lt;/code&gt;方法&lt;/li&gt;
+&lt;li&gt;不能使用&lt;code&gt;NSAllocateObject&lt;/code&gt;/&lt;code&gt;NSDeallocateObject&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;必须遵守内存管理的方法命名规则&lt;/li&gt;
+&lt;li&gt;不要显示的调用&lt;code&gt;dealloc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;@autoreleasepool&lt;/code&gt;块替代&lt;code&gt;NSAutoreleasePool&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;不能使用区域&lt;code&gt;NSZone&lt;/code&gt;（为了防止内存碎片化引入的结构）&lt;/li&gt;
+&lt;li&gt;对象型变量不能作为C语言结构体的成员&lt;/li&gt;
+&lt;li&gt;显示转换&lt;code&gt;id&lt;/code&gt;和&lt;code&gt;void *&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;对象型变量不能作为C语言结构体的成员&quot;&gt;&lt;a href=&quot;#对象型变量不能作为C语言结构体的成员&quot; class=&quot;headerlink&quot; title=&quot;对象型变量不能作为C语言结构体的成员&quot;&gt;&lt;/a&gt;对象型变量不能作为C语言结构体的成员&lt;/h3&gt;&lt;p&gt;因为ARC把内存管理的工作交给了编译器，所以编译器必须能够知道并管理对象的生存周期。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;内存管理的思考方式&quot;&gt;&lt;a href=&quot;#内存管理的思考方式&quot; class=&quot;headerlink&quot; title=&quot;内存管理的思考方式&quot;&gt;&lt;/a&gt;内存管理的思考方式&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;自己生成的对象，自己持有&lt;/li&gt;
+&lt;li&gt;非自己生成的对象，自己也能持有&lt;/li&gt;
+&lt;li&gt;不再需要自己持有的对象时释放&lt;/li&gt;
+&lt;li&gt;非自己持有的对象无法释放&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>iOS多国化学习笔记</title>
