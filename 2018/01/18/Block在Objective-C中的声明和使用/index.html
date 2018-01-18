@@ -86,28 +86,16 @@
 
 
 
-<meta name="description" content="xib和storyboard文件
-Project -&amp;gt; Localizations中选择需要本地化的语言
-xib文件选择Localization中的Base，并勾选需要本地化的语言
-storyboard文件中Localization中，勾选Base（默认已经勾选）和需要本地化的语言
-在相应的XXX.lproj目录中，找到XXX.strings文件，修改需要本地化的内容">
+<meta name="description" content="作为局部变量的声明和使用:1234567// formatreturnType (^blockName)(parameterType) = ^[returnType](parameters)&amp;#123;...&amp;#125;;//code exampleNSString * (^getFullName)(NSString *, NSString *) = ^(NSString *firstName,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS多国化学习笔记">
-<meta property="og:url" content="http://yoursite.com/2016/11/22/iOS多国化学习笔记/index.html">
+<meta property="og:title" content="Block在Objective-C中的声明和使用">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/Block在Objective-C中的声明和使用/index.html">
 <meta property="og:site_name" content="Henry's blog">
-<meta property="og:description" content="xib和storyboard文件
-Project -&amp;gt; Localizations中选择需要本地化的语言
-xib文件选择Localization中的Base，并勾选需要本地化的语言
-storyboard文件中Localization中，勾选Base（默认已经勾选）和需要本地化的语言
-在相应的XXX.lproj目录中，找到XXX.strings文件，修改需要本地化的内容">
-<meta property="og:updated_time" content="2016-11-23T10:01:22.000Z">
+<meta property="og:description" content="作为局部变量的声明和使用:1234567// formatreturnType (^blockName)(parameterType) = ^[returnType](parameters)&amp;#123;...&amp;#125;;//code exampleNSString * (^getFullName)(NSString *, NSString *) = ^(NSString *firstName,">
+<meta property="og:updated_time" content="2018-01-18T03:31:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS多国化学习笔记">
-<meta name="twitter:description" content="xib和storyboard文件
-Project -&amp;gt; Localizations中选择需要本地化的语言
-xib文件选择Localization中的Base，并勾选需要本地化的语言
-storyboard文件中Localization中，勾选Base（默认已经勾选）和需要本地化的语言
-在相应的XXX.lproj目录中，找到XXX.strings文件，修改需要本地化的内容">
+<meta name="twitter:title" content="Block在Objective-C中的声明和使用">
+<meta name="twitter:description" content="作为局部变量的声明和使用:1234567// formatreturnType (^blockName)(parameterType) = ^[returnType](parameters)&amp;#123;...&amp;#125;;//code exampleNSString * (^getFullName)(NSString *, NSString *) = ^(NSString *firstName,">
 
 
 
@@ -128,9 +116,9 @@ storyboard文件中Localization中，勾选Base（默认已经勾选）和需要
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/22/iOS多国化学习笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/Block在Objective-C中的声明和使用/"/>
 
-  <title> iOS多国化学习笔记 | Henry's blog </title>
+  <title> Block在Objective-C中的声明和使用 | Henry's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -250,7 +238,7 @@ storyboard文件中Localization中，勾选Base（默认已经勾选）和需要
             
             
               
-                iOS多国化学习笔记
+                Block在Objective-C中的声明和使用
               
             
           </h1>
@@ -262,8 +250,8 @@ storyboard文件中Localization中，勾选Base（默认已经勾选）和需要
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-22T18:00:43+08:00" content="2016-11-22">
-              2016-11-22
+            <time itemprop="dateCreated" datetime="2018-01-18T11:29:25+08:00" content="2018-01-18">
+              2018-01-18
             </time>
           </span>
 
@@ -290,20 +278,14 @@ storyboard文件中Localization中，勾选Base（默认已经勾选）和需要
       
 
       
-        <h2 id="xib和storyboard文件"><a href="#xib和storyboard文件" class="headerlink" title="xib和storyboard文件"></a>xib和storyboard文件</h2><ol>
-<li>Project -&gt; Localizations中选择需要本地化的语言</li>
-<li>xib文件选择Localization中的Base，并勾选需要本地化的语言</li>
-<li>storyboard文件中Localization中，勾选Base（默认已经勾选）和需要本地化的语言</li>
-<li>在相应的XXX.lproj目录中，找到XXX.strings文件，修改需要本地化的内容<a id="more"></a>
-</li>
-</ol>
-<h2 id="代码中的文字"><a href="#代码中的文字" class="headerlink" title="代码中的文字"></a>代码中的文字</h2><ol>
-<li>找到需要本地化的内容，替换成<code>NSLocalizedString(key, comment: comment)</code></li>
-<li>使用命令<code>genstrings *.swift -o en.lproj</code>行生成Localizabel.strings文件</li>
-<li>添加生成的strings文件到工具目录，并且勾选和需要本地化的语言</li>
-<li>修改需要本地化的内容</li>
-</ol>
-<h2 id="InfoPlist-strings"><a href="#InfoPlist-strings" class="headerlink" title="InfoPlist.strings"></a>InfoPlist.strings</h2><p>可以修改plist中显示的内容，例如App的名字</p>
+        <h2 id="作为局部变量的声明和使用"><a href="#作为局部变量的声明和使用" class="headerlink" title="作为局部变量的声明和使用:"></a>作为局部变量的声明和使用:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// format</div><div class="line">returnType (^blockName)(parameterType) = ^[returnType](parameters)&#123;...&#125;;</div><div class="line">//code example</div><div class="line">NSString * (^getFullName)(NSString *, NSString *) = ^(NSString *firstName, NSString *lastName) &#123;</div><div class="line">return [NSString stringWithFormat:@&quot;%@ %@&quot;, firstName, lastName];</div><div class="line">&#125;;</div><div class="line">NSLog(@&quot;My fullName is: %@&quot;, getFullName(@&quot;Henry&quot;, @&quot;Huang&quot;));</div></pre></td></tr></table></figure>
+<h2 id="作为一个property声明和使用："><a href="#作为一个property声明和使用：" class="headerlink" title="作为一个property声明和使用："></a>作为一个property声明和使用：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// format</div><div class="line">@property (nonatomic, copy) returnType (^blockName)(parameterTypes);</div><div class="line">// code example</div><div class="line">@interface Person: NSObject</div><div class="line">@property (nonatomic, copy) NSString *(^getFullName)(NSString *firstName, NSString *lastName);</div><div class="line">@end</div></pre></td></tr></table></figure>
+<h2 id="作为一个方法参数声明和使用："><a href="#作为一个方法参数声明和使用：" class="headerlink" title="作为一个方法参数声明和使用："></a>作为一个方法参数声明和使用：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// declare</div><div class="line">- (void)someMethodUsingBlock:(returnType(^)(parameterTypes))blockName;</div><div class="line">// as argument to a method call</div><div class="line">[someObject someMethodUsingBlock:^returnType(parameters)&#123;...&#125;];</div></pre></td></tr></table></figure>
+<h2 id="作为typedef使用："><a href="#作为typedef使用：" class="headerlink" title="作为typedef使用："></a>作为<code>typedef</code>使用：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// format</div><div class="line">typedef returnType(^TypeName)(parameterTypes);</div><div class="line">TypeName blockName = ^[returnType](parameters) &#123;...&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>参考：<a href="http://goshdarnblocksyntax.com/" target="_blank" rel="external">How Do I Declare A Block in Objective-C?</a></p>
+<p>示例代码：<a href="https://github.com/xiaobinhuang/OC-blocks" target="_blank" rel="external">GitHub</a></p>
+</blockquote>
 
       
     </div>
@@ -328,17 +310,13 @@ storyboard文件中Localization中，勾选Base（默认已经勾选）和需要
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/20/iOS隐藏键盘/" rel="next" title="iOS隐藏键盘">
-                <i class="fa fa-chevron-left"></i> iOS隐藏键盘
+              <a href="/2016/11/30/iOS-内存管理笔记/" rel="next" title="iOS 内存管理笔记">
+                <i class="fa fa-chevron-left"></i> iOS 内存管理笔记
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/30/iOS-内存管理笔记/" rel="prev" title="iOS 内存管理笔记">
-                iOS 内存管理笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -452,7 +430,7 @@ storyboard文件中Localization中，勾选Base（默认已经勾选）和需要
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#xib和storyboard文件"><span class="nav-number">1.</span> <span class="nav-text">xib和storyboard文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码中的文字"><span class="nav-number">2.</span> <span class="nav-text">代码中的文字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#InfoPlist-strings"><span class="nav-number">3.</span> <span class="nav-text">InfoPlist.strings</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#作为局部变量的声明和使用"><span class="nav-number">1.</span> <span class="nav-text">作为局部变量的声明和使用:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作为一个property声明和使用："><span class="nav-number">2.</span> <span class="nav-text">作为一个property声明和使用：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作为一个方法参数声明和使用："><span class="nav-number">3.</span> <span class="nav-text">作为一个方法参数声明和使用：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作为typedef使用："><span class="nav-number">4.</span> <span class="nav-text">作为typedef使用：</span></a></li></ol></div>
             
           </div>
         </section>

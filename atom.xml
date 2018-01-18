@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-30T08:25:38.000Z</updated>
+  <updated>2018-01-18T03:31:58.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Block在Objective-C中的声明和使用</title>
+    <link href="http://yoursite.com/2018/01/18/Block%E5%9C%A8Objective-C%E4%B8%AD%E7%9A%84%E5%A3%B0%E6%98%8E%E5%92%8C%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2018/01/18/Block在Objective-C中的声明和使用/</id>
+    <published>2018-01-18T03:29:25.000Z</published>
+    <updated>2018-01-18T03:31:58.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;作为局部变量的声明和使用&quot;&gt;&lt;a href=&quot;#作为局部变量的声明和使用&quot; class=&quot;headerlink&quot; title=&quot;作为局部变量的声明和使用:&quot;&gt;&lt;/a&gt;作为局部变量的声明和使用:&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;// format&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;returnType (^blockName)(parameterType) = ^[returnType](parameters)&amp;#123;...&amp;#125;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;//code example&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;NSString * (^getFullName)(NSString *, NSString *) = ^(NSString *firstName, NSString *lastName) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;return [NSString stringWithFormat:@&amp;quot;%@ %@&amp;quot;, firstName, lastName];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;NSLog(@&amp;quot;My fullName is: %@&amp;quot;, getFullName(@&amp;quot;Henry&amp;quot;, @&amp;quot;Huang&amp;quot;));&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;作为一个property声明和使用：&quot;&gt;&lt;a href=&quot;#作为一个property声明和使用：&quot; class=&quot;headerlink&quot; title=&quot;作为一个property声明和使用：&quot;&gt;&lt;/a&gt;作为一个property声明和使用：&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;// format&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;@property (nonatomic, copy) returnType (^blockName)(parameterTypes);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;// code example&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;@interface Person: NSObject&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;@property (nonatomic, copy) NSString *(^getFullName)(NSString *firstName, NSString *lastName);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;@end&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;作为一个方法参数声明和使用：&quot;&gt;&lt;a href=&quot;#作为一个方法参数声明和使用：&quot; class=&quot;headerlink&quot; title=&quot;作为一个方法参数声明和使用：&quot;&gt;&lt;/a&gt;作为一个方法参数声明和使用：&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;// declare&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;- (void)someMethodUsingBlock:(returnType(^)(parameterTypes))blockName;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;// as argument to a method call&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[someObject someMethodUsingBlock:^returnType(parameters)&amp;#123;...&amp;#125;];&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;作为typedef使用：&quot;&gt;&lt;a href=&quot;#作为typedef使用：&quot; class=&quot;headerlink&quot; title=&quot;作为typedef使用：&quot;&gt;&lt;/a&gt;作为&lt;code&gt;typedef&lt;/code&gt;使用：&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;// format&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;typedef returnType(^TypeName)(parameterTypes);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;TypeName blockName = ^[returnType](parameters) &amp;#123;...&amp;#125;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;a href=&quot;http://goshdarnblocksyntax.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;How Do I Declare A Block in Objective-C?&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;示例代码：&lt;a href=&quot;https://github.com/xiaobinhuang/OC-blocks&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;作为局部变量的声明和使用&quot;&gt;&lt;a href=&quot;#作为局部变量的声明和使用&quot; class=&quot;headerlink&quot; title=&quot;作为局部变量的声明和使用:&quot;&gt;&lt;/a&gt;作为局部变量的声明和使用:&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>iOS 内存管理笔记</title>
